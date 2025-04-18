@@ -10,24 +10,30 @@ const productSchema = new Schema(
     description: {
       type: String,
     },
-    image: {
-      type: String,
-      required: true,
-    },
+    image: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
 
-    sellingprice:{
-        type: Number,
-        require: true,
+    sellingprice: {
+      type: Number,
+      require: true,
     },
-    discountprice:{
-        type: Number,
-        // require: false,
+    discountprice: {
+      type: Number,
+      // require: false,
     },
 
     stock: {
-        type: Number,
-        require: true,
+      type: Number,
+      require: true,
     },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "category",
+    }, 
 
     color: [String],
   },
@@ -36,4 +42,4 @@ const productSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("category", productSchema);
+module.exports = mongoose.model("Product", productSchema);

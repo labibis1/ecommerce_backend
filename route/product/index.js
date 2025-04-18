@@ -1,6 +1,7 @@
 const express = require("express");
 const {
   CreateProductController,
+  getAllproductController,
 } = require("../../config/controllers/productController");
 const multer = require("multer");
 const router = express.Router();
@@ -24,5 +25,9 @@ const upload = multer({ storage: storage });
 
  // http://localhost:3000/product/createproduct
 router.post("/createproduct", upload.array("images", 5), CreateProductController);
+
+
+router.get("/products", getAllproductController)
+
 
 module.exports = router;
